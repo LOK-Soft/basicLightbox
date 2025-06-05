@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [5.1.0] - 2025-06-05
+
+### Added
+
+- Extend Option with (optional) "container" parameter which can be used to specify the container the overlay should be attached to
+
 ## [5.0.4] - 2021-01-17
 
 ### Changed

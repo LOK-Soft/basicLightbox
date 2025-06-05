@@ -62,11 +62,14 @@ const validateOptions = function(opts = {}) {
 	if (opts.className == null) opts.className = ''
 	if (opts.onShow == null) opts.onShow = () => {}
 	if (opts.onClose == null) opts.onClose = () => {}
+	if (opts.container == null) opts.container = document.body;
+
 
 	if (typeof opts.closable !== 'boolean') throw new Error('Property `closable` must be a boolean')
 	if (typeof opts.className !== 'string') throw new Error('Property `className` must be a string')
 	if (typeof opts.onShow !== 'function') throw new Error('Property `onShow` must be a function')
 	if (typeof opts.onClose !== 'function') throw new Error('Property `onClose` must be a function')
+	if (typeof opts.container !== 'object') throw new Error('Property `conteiner` must be a object')
 
 	return opts
 
@@ -137,11 +140,12 @@ const render = function(content, opts) {
  * Shows a lightbox by appending an element to the DOM.
  * @param {Node} elem
  * @param {Function} next - The callback that gets executed when the lightbox starts to show up.
+ * @param {?Object} opts
  * @returns {Boolean} success
  */
-const show = function(elem, next) {
+const show = function(elem, next, opts) {
 
-	document.body.appendChild(elem)
+	opts.container.appendChild(elem)
 
 	// Wait a while to ensure that the class change triggers the animation
 	setTimeout(() => {
@@ -223,7 +227,7 @@ export const create = function(content, opts) {
 			// Continue with the callback when available
 			if (typeof next === 'function') return next(instance)
 
-		})
+		}, opts)
 
 	}
 
