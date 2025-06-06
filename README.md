@@ -217,6 +217,10 @@ The option object can include the following properties:
 	 */
 	className: '',
 	/*
+	 * (optional) dom object the lightbox markup will be appended to, default: document.body
+	 */
+	container: dom-object
+	/*
 	 * Function that gets executed before the lightbox will be shown.
 	 * Returning false will prevent the lightbox from showing.
 	 */
